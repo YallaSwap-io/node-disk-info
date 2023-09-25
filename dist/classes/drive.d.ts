@@ -29,6 +29,10 @@ export default class Drive {
      */
     private readonly _mounted;
     /**
+     * Indicates the volume name of the disk.
+     */
+    private readonly _volumeName;
+    /**
      * Constructor for Drive class.
      *
      * @param {string} filesystem Drive filesystem.
@@ -37,8 +41,9 @@ export default class Drive {
      * @param {number} available Available disk space.
      * @param {string} capacity Disk capacity.
      * @param {string} mounted Indicates the mount point of the disk.
+     * @param {string} [volumeName] Indicates the volume name of the disk.
      */
-    constructor(filesystem: string, blocks: number, used: number, available: number, capacity: string, mounted: string);
+    constructor(filesystem: string, blocks: number, used: number, available: number, capacity: string, mounted: string, volumeName?: string | undefined);
     /**
      * Drive filesystem.
      *
@@ -75,4 +80,10 @@ export default class Drive {
      * @return Gets the mount point of the disk.
      */
     get mounted(): string;
+    /**
+     * Indicates the volume name of the disk.
+     *
+     * @return Gets the volume name of the disk.
+     */
+    get volumeName(): string | undefined;
 }

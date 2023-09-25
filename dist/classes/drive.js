@@ -15,14 +15,17 @@ var Drive = /** @class */ (function () {
      * @param {number} available Available disk space.
      * @param {string} capacity Disk capacity.
      * @param {string} mounted Indicates the mount point of the disk.
+     * @param {string} [volumeName] Indicates the volume name of the disk.
      */
-    function Drive(filesystem, blocks, used, available, capacity, mounted) {
+    function Drive(filesystem, blocks, used, available, capacity, mounted, volumeName) {
+        if (volumeName === void 0) { volumeName = undefined; }
         this._filesystem = filesystem;
         this._blocks = blocks;
         this._used = used;
         this._available = available;
         this._capacity = capacity;
         this._mounted = mounted;
+        this._volumeName = volumeName;
     }
     Object.defineProperty(Drive.prototype, "filesystem", {
         /**
@@ -92,6 +95,18 @@ var Drive = /** @class */ (function () {
          */
         get: function () {
             return this._mounted;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Drive.prototype, "volumeName", {
+        /**
+         * Indicates the volume name of the disk.
+         *
+         * @return Gets the volume name of the disk.
+         */
+        get: function () {
+            return this._volumeName;
         },
         enumerable: false,
         configurable: true
